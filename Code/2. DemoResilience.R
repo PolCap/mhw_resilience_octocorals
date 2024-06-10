@@ -26,7 +26,7 @@ library(Matrix)
 
 # Load the data
 
-load(paste0(ResultPath, "/Matrices.RData"))
+load(paste0(DataPath, "/Matrices.RData"))
 
 # Load functions 
 
@@ -72,17 +72,13 @@ dem_res <- mats_all %>%
          time_recovery=map(matrix, 
                            ~return.time(.x)),
           r_up=map(matrix, ~reac(.x, bound = "upper")),
-          r_low=map(matrix, ~reac(.x, bound = "lower")),
-         ext=map(matrix, ~maxatt(.x, return.t = T)$t)) %>% 
+          r_low=map(matrix, ~reac(.x, bound = "lower"))) %>% 
   # unnest these estimates
   unnest(c(compensation, resistance, speed_recovery, time_recovery, 
            e_res, e_rec),names_sep = "_") 
-  # # Calculate the envelop 
-  # mutate(res=r_up/r_low,
-  #        res2=r_up*r_low)
-
+  
 # Save the data 
 
-setwd(ResultPath)
+setwd(DataPath)
 save(dem_res,file = "DemRes.RData")
 
