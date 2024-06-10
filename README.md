@@ -38,7 +38,7 @@ Pol Capdevila<sup>1,2</sup>*, Yanis Zentner<sup>1,2</sup>, Graciel·la Rovira<su
 
 # Code
 
-To run the statistical analyses we used different R scripts. We have numerated them to show the order that we recommend to follow to produce the results: 
+To run the statistical analyses we used different R scripts. We have enumerated them to show the order that we recommend to follow to produce the results: 
 
 - __`1.Matrices.R`__: code to produce the matrix population models from the raw demographic data.
 - __`2.DemoResilience.R`__: code to calculate demographic resilience from the matrix population models.
@@ -58,4 +58,4 @@ _R version 4.2.3 or greater_
 
 To download `R`, go to https://www.r-project.org and for `RStudio`, go to https://www.rstudio.com/products/rstudio/download/ .
 
-Cite the code: [![DOI](https://zenodo.org/badge/436702812.svg)](https://zenodo.org/badge/latestdoi/436702812)
+Cite the code: [![DOI](https://zenodo.org/badge/812910476.svg)](https://zenodo.org/doi/10.5281/zenodo.11545408)
