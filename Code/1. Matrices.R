@@ -23,8 +23,8 @@ CodePath <- paste0(path,"/Code")
 
 # Load data 
 
-data_medes <- read.csv2(paste0(DataPath,"/TPermanents_PClavata.csv"))
-data_pc <- read.csv2(paste0(DataPath,"/PortCros_99-09.csv"))
+data_medes <- read.csv2(paste0(DataPath,"/Medes.csv"))
+data_pc <- read.csv2(paste0(DataPath,"/PortCros.csv"))
 
 # Load the function
 
@@ -458,7 +458,7 @@ mats_pc <- mats_pc %>%
 
 # Save the data ----------------------------------------------------------------
 
-setwd(ResultPath)
+setwd(DataPath)
 save(list = ls(pattern = 'mats_'), 
      file = "Matrices.RData")
   
