@@ -24,14 +24,6 @@ library(popdemo)
 library(popbio)
 library(Matrix)
 library(Rage)
-library(patchwork)
-# library(showtext)
-# library(extrafont)
-
-# Load the font
-
-# font_add("futura", "/Users/polcapdevila/Library/Fonts/Futura Light.ttf")
-# showtext_auto()
 
 #Personal theme for ggplot
 
@@ -58,10 +50,8 @@ theme_set(theme(panel.background=element_blank(),
 
 # Load the data
 
-load(paste0(ResultPath, "/DemRes.RData"))
-load(paste0(ResultPath, "/temperature.RData"))
-
-temp_m2 <- read.csv2(paste0(DataPath, "/MedesTemp2.csv"))
+load(paste0(DataPath, "/DemRes.RData"))
+load(paste0(DataPath, "/temperature.RData"))
 
 # Temporal trends --------------------------------------------------------------
 
@@ -155,6 +145,6 @@ dem_cat <- dem_res %>%
 
 # Save data sets for posterior modelling
 
-setwd(DataPath)
+setwd(ResultPath)
 save(dem_cat, dem_grad, file = "ResTemp.RData")
-write_csv2(dem_cat, file="Table S2.csv")
+
