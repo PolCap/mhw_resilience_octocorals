@@ -158,12 +158,6 @@ vital_rates <- function(size, size_next, size_next2,
   
 }
 
-# Function to estimate the time of recovery ------------------------------------
-
-return.time <- function(matA){
-  popdemo::dr(matA, return.time = T)$t
-}
-
 # Function to decompose the matrix into demographic processes ------------------
 
 # First, a separate function to create matF and matU
@@ -325,18 +319,8 @@ pop_proj <- function(mats, mats_mhw, prob, n0, tmax, reps) {
   data <-  expand_grid(rep=seq(1, reps, by=1),
                        time=seq(1, tmax, by=1),
                        prob=prob,
-                       # compensation = NA,
                        resistance = NA, 
                        recovery = NA,
-                       # rec_time=NA,
-                       # e_res_fec=NA,
-                       # e_res_growth=NA,
-                       # e_res_shrinkage=NA,
-                       # e_res_stasis=NA,
-                       # e_rec_fec=NA,
-                       # e_rec_growth=NA,
-                       # e_rec_shrinkage=NA,
-                       # e_rec_stasis=NA,
                        structure=NA, 
                        n=NA)
   data <- as_tibble(data)
@@ -351,22 +335,9 @@ pop_proj <- function(mats, mats_mhw, prob, n0, tmax, reps) {
       
       # Calculate the resilience components
       
-      # data$compensation[data$time==t-1& data$rep==r] <- maxamp(A[[1]])
       data$resistance[data$time==t-1& data$rep==r] <- reac(A[[1]], bound = "lower")
       data$recovery[data$time==t-1& data$rep==r] <- dr(A[[1]])
-      # data$rec_time[data$time==t-1& data$rep==r] <- return.time(A[[1]])
-      # el_res <- elas_res(A[[1]])
-      # el_rec <- elas_rec(A[[1]])
-      # data$e_res_fec[data$time==t-1& data$rep==r] <- el_res[1]
-      # data$e_res_growth[data$time==t-1& data$rep==r] <- el_res[2]
-      # data$e_res_shrinkage[data$time==t-1& data$rep==r] <- el_res[3]
-      # data$e_res_stasis[data$time==t-1& data$rep==r] <- el_res[4]
-      # data$e_rec_fec[data$time==t-1& data$rep==r] <- el_rec[1]
-      # data$e_rec_growth[data$time==t-1& data$rep==r] <- el_rec[2]
-      # data$e_rec_shrinkage[data$time==t-1& data$rep==r] <- el_rec[3]
-      # data$e_rec_stasis[data$time==t-1& data$rep==r] <- el_rec[4]
-      
-      
+
       # Estimate the abundance
       data$structure[data$time==t & data$rep==r] <- list(A[[1]] %*% data$structure[data$time==t-1 & data$rep==r][[1]])
       data$n[data$time==t & data$rep==r] <- sum(A[[1]] %*% data$structure[data$time==t-1 & data$rep==r][[1]])
