@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------- #
 # - FILE NAME:   SupplementaryFigures.R         
 # - DATE:        01/05/2024
-# - DESCRIPTION: Code to run the suppplementary analyses and figures.
+# - DESCRIPTION: Code to create the suppplementary figures.
 # - AUTHORS:     Pol Capdevila Lanzaco (pcapdevila@ub.edu)
 # -------------------------------------------------------------------------------------- #
 
@@ -11,8 +11,6 @@ rm(list=ls(all=TRUE)) #remove everything
 
 library(dplyr)
 library(tidyverse)
-library(popbio)
-library(ggrepel)
 library(sf)
 library(marmap)
 library(sp)
