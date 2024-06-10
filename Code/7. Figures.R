@@ -16,14 +16,7 @@ CodePath <- paste0(path,"/Code")
 
 library(dplyr)
 library(tidyverse)
-library(popdemo)
-library(popbio)
-library(Matrix)
 library(patchwork)
-library(ggdist)
-library(ggrepel)
-library(foreach)
-library(doParallel)
 
 # Personal theme for ggplot
 
@@ -200,7 +193,7 @@ sens_data <- dem_cat %>% ungroup %>%
 ggsave("Figure 3.pdf", fig3, 
        width = 11, height = 8, path = ResultPath)
 
-# Figure 5: Projections --------------------------------------------------------
+# Figure 4: Projections --------------------------------------------------------
 
 load(paste0(ResultPath, "/Simulations.RData"))
 
