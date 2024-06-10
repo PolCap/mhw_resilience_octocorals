@@ -19,9 +19,6 @@ library(tidyverse)
 library(popdemo)
 library(popbio)
 library(Matrix)
-library(patchwork)
-library(ggdist)
-library(ggrepel)
 library(foreach)
 library(doParallel)
 
@@ -95,52 +92,3 @@ stopCluster(cl)
 
 setwd(ResultPath)
 save(results, file = "Simulations.RData")
-
-# Figure Population abundance ----------------------------------------------
-
-# Find the first time that the population abundance goes below 1
-
-(position <- results %>% 
-    mutate(probs=paste("Every", prob*100, "years"),
-           probs=fct_reorder(probs, prob)) %>%
-    group_by(probs, rep, time) %>% 
-    mutate(above.qe= n >= 10,
-           alife=cumprod(above.qe)) %>% 
-    group_by(probs, time) %>% 
-    summarise(prob= 1-(sum(alife, na.rm = T)/reps)) %>% 
-    filter(prob==1) %>% 
-    group_by(probs) %>% 
-    summarise(time=min(time)))
-
-# Create a gradient of colours 
-
-pal <-  colorRampPalette(c("#D9AA1E", "#A6122D"))
-cols <- pal(length(probs))
-
-# Plot it
-
-(p3 <- results %>%
-   filter(rep<250) %>% 
-    mutate(probs=paste("Every", prob*100, "years"),
-           probs=fct_reorder(probs, prob)) %>%
-    ggplot(aes(x=time, y=n,
-              colour=probs))+
-    geom_line(aes(group=interaction(probs, rep)),
-              alpha=0.1) +
-    geom_hline(aes(colour=probs, 
-               yintercept = 1), 
-               linetype="dashed")+
-    facet_wrap(~probs)+
-    geom_text_repel(data = position,
-                    aes(x=time, y= 1,
-                        label=paste(time, "years")),
-                    segment.color = 'black',
-                    box.padding = 2.5,
-                    nudge_x = .15,
-                    nudge_y = 1, 
-                    size=5) +
-    scale_colour_manual(values=cols)+
-    labs(y= "Abundance",
-         x="Time")+
-    theme(legend.position = "none"))
-
