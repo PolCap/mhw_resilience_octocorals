@@ -21,11 +21,6 @@ CodePath <- paste0(path,"/Code")
 library(dplyr)
 library(tidyverse)
 library(popdemo)
-library(popbio)
-library(Matrix)
-library(Rage)
-library(Rcompadre)
-library(patchwork)
 library(lefko3)
 
 #Personal theme for ggplot
