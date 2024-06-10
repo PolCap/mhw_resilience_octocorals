@@ -41,7 +41,7 @@ theme_set(theme(panel.background=element_blank(),
 
 # Load the data
 
-temp_pc <- read.csv2("Data/T_Port_Cros_25m.csv")
+temp_pc <- read.csv2("Data/T_Port_Cros.csv")
 temp_m <- read.delim("Data/T_Medes.txt",check.names = F)
 
 # Port-Cros --------------------------------------------------------------------
@@ -102,5 +102,5 @@ mhw_cat_m <- category(mhw_m, S = FALSE, name = "Medes")
 
 # Save the data 
 
-setwd(ResultPath)
+setwd(DataPath)
 save(file = "temperature.RData", mhw_m, mhw_pc, mhw_cat, mhw_cat_m)
