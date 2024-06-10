@@ -47,8 +47,8 @@ theme_set(theme(panel.background=element_blank(),
 
 # Load the data
 
-load(paste0(ResultPath, "/Matrices.RData"))
-load(paste0(ResultPath, "/temperature.RData"))
+load(paste0(DataPath, "/Matrices.RData"))
+load(paste0(DataPath, "/temperature.RData"))
 
 # Join all the data sets to make the calculations easier 
 
