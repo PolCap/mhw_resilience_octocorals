@@ -33,7 +33,7 @@ Pol Capdevila<sup>1,2</sup>*, Yanis Zentner<sup>1,2</sup>, Graciel·la Rovira<su
 - __`DemRes.RData`__: demographic resilience estimates for Port-Cros National Park and Montgrí, Medes Islands and Baix Ter Natural Park populations. 
 - __`temperature.RData`__: MHW estimates for the Port-Cros National Park and Montgrí, Medes Islands and Baix Ter Natural Park populations. 
 
-
+The data files T_Medes.txt and T_Port_Cros.csv appear in the scripts but are not stored in this repository. They are available upon request at https://t-mednet.org/.
 ---
 
 # Code
